@@ -1,6 +1,7 @@
 'use client'
 // modules
 import Link from 'next/link'
+import Image from 'next/image'
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -26,7 +27,14 @@ export default function Header() {
 				{/* left */}
 				<div className="flex items-center z-50">
 					<h1 className="text-2xl font-bold">
-						<ArwLink href={`/`}>ARW</ArwLink>
+						<ArwLink href={`/`}>
+							<Image
+								src="/images/logo.jpg"
+								alt="Logo"
+								width={132}
+								height={75}
+							/>
+						</ArwLink>
 					</h1>
 				</div>
 
