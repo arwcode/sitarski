@@ -38,7 +38,6 @@ export async function createProject(
 		const category: ICategory | null = await CategoryModel.findOne({
 			label: projectData.category,
 		})
-
 		const slug = await generateUniqueSlug(ProjectModel, projectData.title)
 
 		const newProject: IProject = await ProjectModel.create({
