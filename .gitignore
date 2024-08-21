@@ -17,6 +17,7 @@
 /build
 
 # misc
+old.zip
 .DS_Store
 *.pem
 
