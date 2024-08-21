@@ -22,7 +22,7 @@ Make sure you have the following installed on your machine:
 **Cloning the repository**
 
 ```bash
-git clone https://github.com/arw/sitarski.git
+git clone https://github.com/arwcode/sitarski.git
 cd sitarski
 ```
 
