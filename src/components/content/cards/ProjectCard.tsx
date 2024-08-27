@@ -84,7 +84,7 @@ export default function ProjectCard({
 					/>
 				</When>
 			</ArwFlex>
-			<ArwFlex row between className="items-end">
+			<ArwFlex row between>
 				{/* user */}
 				<ArwLink href={userLink}>
 					<ArwFlex row className="items-center gap-2 relative z-30">
