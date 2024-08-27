@@ -2,13 +2,17 @@
 // modules
 import { revalidatePath } from 'next/cache'
 // lib
-import { Adjacent } from '@/lib/types/results'
+import {
+	deepClone,
+	generateUniqueSlug,
+	validateData,
+	findPrev,
+	findNext,
+} from '@/lib/utils'
+import { Adjacent, DataResult, Result } from '@/lib/types'
 import { CategoryModel, ICategory } from '@/lib/models/category.model'
-import { connectToDatabase } from '@/lib/utils/mongoose'
-import { DataResult, Result } from '@/lib/types/results'
+import { connectToDatabase } from '@/lib/utils/services'
 import { debug, handleError } from '@/lib/utils/dev'
-import { deepClone, generateUniqueSlug, validateData } from '@/lib/utils'
-import { findPrev, findNext } from '@/lib/utils'
 import { getCurrentUser } from '@/lib/actions/user.actions'
 import { IImage, ImageModel } from '@/lib/models/image.model'
 import { IProject, ProjectModel } from '@/lib/models/project.model'
@@ -38,6 +42,7 @@ export async function createProject(
 		const category: ICategory | null = await CategoryModel.findOne({
 			label: projectData.category,
 		})
+
 		const slug = await generateUniqueSlug(ProjectModel, projectData.title)
 
 		const newProject: IProject = await ProjectModel.create({
@@ -92,13 +97,14 @@ export async function getProjects(
 		}
 
 		const sortOptions: { [key: string]: any } = {
+			[SortOptions.CUSTOM]: { order: 1 },
 			[SortOptions.TITLE]: { title: 1 },
 			[SortOptions.USER]: { user: 1, title: 1 },
 			[SortOptions.DATE]: { _id: 1 },
 		}
 
 		const sort: any =
-			sortOptions[searchParams.sort] || sortOptions[SortOptions.TITLE]
+			sortOptions[searchParams.sort] || sortOptions[SortOptions.CUSTOM]
 
 		const projects = await ProjectModel.find(projectQuery)
 			.populate('user', '_id username photo')
@@ -121,6 +127,8 @@ export async function getProjectBySlug(
 	profile: boolean
 ): Promise<DataResult<Adjacent<IProject>>> {
 	try {
+		await connectToDatabase()
+
 		const { data: projects }: DataResult<IProject[]> = await getProjects(
 			searchParams,
 			profile
@@ -295,6 +303,8 @@ export async function setProjectCover(
 	image: IImage
 ): Promise<Result<IProject>> {
 	try {
+		await connectToDatabase()
+
 		const updatedProject = await ProjectModel.findOneAndUpdate(
 			{ slug },
 			{
@@ -314,6 +324,8 @@ export async function removeProjectCover(
 	slug: string
 ): Promise<Result<IProject>> {
 	try {
+		await connectToDatabase()
+
 		const updatedProject = await ProjectModel.findOneAndUpdate(
 			{ slug },
 			{
@@ -323,6 +335,47 @@ export async function removeProjectCover(
 		)
 		revalidatePath(routes.PROFILE, 'layout')
 		return { success: true, data: deepClone(updatedProject) }
+	} catch (error) {
+		return { success: false, error: { error: handleError(error) } }
+	}
+}
+
+// Update project order
+export async function updateProjectOrder(
+	projects: { _id: string; order: number }[]
+): Promise<Result<null>> {
+	try {
+		await connectToDatabase()
+
+		const bulkOps = projects.map((project) => ({
+			updateOne: {
+				filter: { _id: project._id },
+				update: { order: project.order },
+			},
+		}))
+
+		await ProjectModel.bulkWrite(bulkOps)
+		return { success: true }
+	} catch (error) {
+		return { success: false, error: { error: handleError(error) } }
+	}
+}
+
+// Update image order
+export async function updateImageOrder(
+	slug: string,
+	reorderedImages: IImage[]
+): Promise<Result<null>> {
+	try {
+		await connectToDatabase()
+
+		await ProjectModel.findOneAndUpdate(
+			{ slug },
+			{
+				images: reorderedImages,
+			}
+		)
+		return { success: true }
 	} catch (error) {
 		return { success: false, error: { error: handleError(error) } }
 	}
@@ -360,7 +413,7 @@ export async function deleteProject(
 		const deletedProject = await ProjectModel.findByIdAndDelete(projectId)
 
 		debug(5, 0, deletedProject)
-		revalidatePath(routes.PROFILE)
+		revalidatePath(routes.PROFILE, 'layout')
 		return { success: true, data: deepClone(deletedProject) }
 	} catch (error) {
 		return { success: false, error: { error: handleError(error) } }

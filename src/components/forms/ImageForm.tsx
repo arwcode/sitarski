@@ -12,10 +12,10 @@ import {
 	handleAddImageToProject,
 	handleUpdateImageInProject,
 } from '@/lib/handlers/project.handlers'
-import { createFilesFormData, loadImage } from '@/lib/utils'
+import { cn, loadImage } from '@/lib/utils'
 import { debug, handleError } from '@/lib/utils/dev'
-import { IImage } from '@/lib/models/image.model'
 import { IProject } from '@/lib/models/project.model'
+import { IImage } from '@/lib/models/image.model'
 
 export default function ImageForm({
 	image,
@@ -32,6 +32,7 @@ export default function ImageForm({
 	const editMode = Boolean(image)
 	const [files, setFiles] = useState<File[]>([])
 	const [isUploading, setIsUploading] = useState(false)
+	const [uploadedCount, setUploadedCount] = useState(0)
 	debug(8, 9, files)
 
 	const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = async () => {
@@ -41,24 +42,19 @@ export default function ImageForm({
 		try {
 			// Edit mode
 			if (image && handleUpdate) {
-				const formData = createFilesFormData(files[0])
-				const updatedImage = await handleUpdateImageInProject(formData, image)
+				const updatedImage = await handleUpdateImageInProject(files[0], image)
 				if (updatedImage) {
 					handleUpdate(updatedImage)
 				}
 			} else {
 				// Add mode
 				for (const file of files) {
-					const formData = createFilesFormData(file)
-					const addedImage = await handleAddImageToProject(
-						formData,
-						project.slug
-					)
-					if (addedImage) {
-						setIsUploading(false)
-						setFiles([])
-					}
+					await handleAddImageToProject(file, project.slug)
+					setUploadedCount((prev) => prev + 1)
 				}
+				setUploadedCount(0)
+				setIsUploading(false)
+				setFiles([])
 			}
 		} catch (error) {
 			console.error(handleError(error))
@@ -76,10 +72,16 @@ export default function ImageForm({
 			<When condition={files.length > 0}>
 				<Button
 					variant="accent"
-					className="absolute left-3 bottom-3 w-full-3 z-20"
+					className={cn('absolute left-3 bottom-3 w-full-3 z-20 text-xs')}
 					onClick={handleSubmit}
 				>
-					{isUploading ? 'Uploading...' : 'Upload image'}
+					{isUploading
+						? files.length == 1 || editMode
+							? 'Uploading...'
+							: `Uploading... ${uploadedCount}/${files.length}`
+						: files.length == 1
+						? 'Upload image'
+						: 'Upload images'}
 				</Button>
 			</When>
 			<When condition={editMode}>

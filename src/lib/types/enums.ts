@@ -6,6 +6,7 @@ export enum Icons {
 	ChevronRight = 'ChevronRight',
 	CloudUpload = 'CloudUpload',
 	Ellipsis = 'Ellipsis',
+	Grip = 'Grip',
 	Home = 'Home',
 	ImageDown = 'ImageDown',
 	ImageUp = 'ImageUp',
@@ -19,13 +20,15 @@ export enum Icons {
 	Sun = 'Sun',
 	Trash = 'Trash',
 	User = 'User',
+	Users = 'Users',
 	X = 'X',
 }
 
 export enum SortOptions {
+	CUSTOM = 'custom',
+	DATE = 'date',
 	TITLE = 'title',
 	USER = 'user',
-	DATE = 'date',
 }
 
 export enum Themes {

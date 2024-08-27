@@ -13,10 +13,10 @@ import { debug, handleError } from '@/lib/utils/dev'
 import { IImage } from '@/lib/models/image.model'
 import { IProject } from '@/lib/models/project.model'
 import { ProjectFormData } from '@/lib/types/zod'
-import { Result } from '@/lib/types/results'
+import { Result } from '@/lib/types'
 import { toastError, toastSuccess } from '@/lib/utils/toasts'
-import { uploadImage } from '@/lib/actions/image.actions'
-import { UploadedImage } from '@/lib/types/shared'
+import { uploadToCloudinary } from '@/lib/utils/services'
+import { UploadedImage } from '@/lib/types'
 
 // CREATE
 // Create new project
@@ -60,43 +60,57 @@ export const handleUpdateProject = async (
 }
 
 // Add image to project
-export const handleAddImageToProject = async (
-	formData: FormData,
-	slug: string
-) => {
-	debug(2, 9, formData)
+export const handleAddImageToProject = async (file: File, slug: string) => {
+	debug(2, 9, file)
 	try {
-		const uploadedImage: UploadedImage = await uploadImage(formData)
-		const { data: addedImage } = await addImageToProject({
-			slug,
-			...uploadedImage,
-		})
-		if (addedImage) {
-			toastSuccess(`Image ${addedImage.name} successfully added.`)
-			return addedImage
+		// Upload image
+		const uploadedImage: UploadedImage | undefined = await uploadToCloudinary(
+			file
+		)
+
+		if (!uploadedImage) {
+			toastError('Image upload failed.')
+			return
+		} else {
+			// Add image to project
+			const { data: addedImage } = await addImageToProject({
+				slug,
+				...uploadedImage,
+			})
+			if (addedImage) {
+				toastSuccess(`Image ${addedImage.name} successfully added.`)
+			}
 		}
 	} catch (error) {
 		console.error(handleError(error))
+		toastError(handleError(error))
 	}
 }
 
 // Edit image in project
-export const handleUpdateImageInProject = async (
-	formData: FormData,
-	image: IImage
-) => {
-	debug(4, 9, formData)
+export const handleUpdateImageInProject = async (file: File, image: IImage) => {
+	debug(4, 9, file)
 	try {
-		const uploadedImage: UploadedImage = await uploadImage(formData)
-		const { data: updatedImage } = await updateImageInProject({
-			image,
-			...uploadedImage,
-		})
-		if (updatedImage) {
-			toastSuccess(
-				`Image ${image.name} successfully updated to ${updatedImage.name}.`
-			)
-			return updatedImage
+		// Upload image
+		const uploadedImage: UploadedImage | undefined = await uploadToCloudinary(
+			file
+		)
+
+		if (!uploadedImage) {
+			toastError('Image upload failed.')
+			return
+		} else {
+			// Update image in project
+			const { data: updatedImage } = await updateImageInProject({
+				image,
+				...uploadedImage,
+			})
+			if (updatedImage) {
+				toastSuccess(
+					`Image ${image.name} successfully updated to ${updatedImage.name}.`
+				)
+				return updatedImage
+			}
 		}
 	} catch (error) {
 		console.error(handleError(error))

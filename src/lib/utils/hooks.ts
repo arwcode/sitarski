@@ -1,6 +1,7 @@
 // modules
 import { useMediaQuery } from 'react-responsive'
 import { useRef, useCallback, useEffect } from 'react'
+import { MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core'
 
 // @func useDebouce
 // Use debounce to delay the execution of a function
@@ -26,11 +27,22 @@ export function useDebounce(
 	return debouncedFunc
 }
 
-// @func useMobile
-// Use mobile to check if the screen is mobile
-export function useMobile() {
-	const isMobile = useMediaQuery({ maxWidth: 768 })
-	return isMobile
+// @func useDndSensors
+export const useDndSensors = () => {
+	const sensors = useSensors(
+		useSensor(MouseSensor, {
+			activationConstraint: {
+				distance: 10,
+			},
+		}),
+		useSensor(TouchSensor, {
+			activationConstraint: {
+				delay: 250,
+				tolerance: 5,
+			},
+		})
+	)
+	return sensors
 }
 
 // @func useKeys
@@ -73,6 +85,28 @@ export function useKeys(
 	}, [keyActions, enabled])
 }
 
+// @func useMobile
+// Use mobile to check if the screen is mobile
+export function useMobile() {
+	const isMobile = useMediaQuery({ maxWidth: 768 })
+	return isMobile
+}
+
+// @func usePopState
+// Use popstate to call a function when the user navigates
+export function usePopState(callback: () => void) {
+	useEffect(() => {
+		const handlePopState = () => {
+			callback()
+		}
+
+		window.addEventListener('popstate', handlePopState)
+		return () => {
+			window.removeEventListener('popstate', handlePopState)
+		}
+	}, [callback])
+}
+
 // @func useScroll
 // Use wheel to call a function when the user scrolls
 export function useScroll(
@@ -104,6 +138,13 @@ export function useScroll(
 			document.removeEventListener('wheel', handleWheel)
 		}
 	}, [ScrollUp, ScrollDown, threshold, enabled])
+}
+
+// @func useScrollToTop
+export const useScrollToTop = () => {
+	useEffect(() => {
+		window.scrollTo(0, 0)
+	}, [])
 }
 
 // @func useSwipe
@@ -170,17 +211,3 @@ export function useSwipe(
 	}, [SwipeLeft, SwipeRight, SwipeUp, SwipeDown, threshold, enabled])
 }
 
-// @func usePopState
-// Use popstate to call a function when the user navigates
-export function usePopState(callback: () => void) {
-	useEffect(() => {
-		const handlePopState = () => {
-			callback()
-		}
-
-		window.addEventListener('popstate', handlePopState)
-		return () => {
-			window.removeEventListener('popstate', handlePopState)
-		}
-	}, [callback])
-}

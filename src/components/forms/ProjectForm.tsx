@@ -1,7 +1,8 @@
 'use client'
 // modules
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 // components
 import {
@@ -20,12 +21,12 @@ import {
 	handleUpdateProject,
 } from '@/lib/handlers/project.handlers'
 import { debug, handleError } from '@/lib/utils/dev'
+import { extractBaseRoute, generateUrl } from '@/lib/utils'
 import { ICategory } from '@/lib/models/category.model'
 import { IProject } from '@/lib/models/project.model'
-import { Option } from '@/lib/types/shared'
+import { Option } from '@/lib/types'
 import { projectSchema, ProjectFormData } from '@/lib/types/zod'
 import { routes } from '@/lib/constants/paths'
-import { generateUrl } from '@/lib/utils'
 
 export default function ProjectForm({
 	project,
@@ -38,6 +39,8 @@ export default function ProjectForm({
 }) {
 	debug(0, 0, project)
 	const router = useRouter()
+	const pathname = usePathname()
+	const [isSubmitting, setIsSubmitting] = useState(false)
 	const categoryOptions: Option[] = categories.map((category: ICategory) => ({
 		value: category.label,
 		label: category.label,
@@ -54,6 +57,7 @@ export default function ProjectForm({
 
 	const handleSubmit = async (projectFormData: ProjectFormData) => {
 		debug(1, 9, projectFormData)
+		setIsSubmitting(true)
 		try {
 			if (project) {
 				// Update project
@@ -62,7 +66,7 @@ export default function ProjectForm({
 					project
 				)
 				if (updatedProject) {
-					router.push(routes.PROFILE)
+					router.push(extractBaseRoute(pathname))
 				}
 			} else {
 				// Create project
@@ -76,6 +80,8 @@ export default function ProjectForm({
 			}
 		} catch (error) {
 			console.error(handleError(error))
+		} finally {
+			setIsSubmitting(false)
 		}
 	}
 
@@ -139,8 +145,14 @@ export default function ProjectForm({
 					/>
 				</ArwFlex>
 				<ArwFlex>
-					<Button variant="accent">
-						{project ? 'Update project' : 'Add project'}
+					<Button variant="accent" disabled={isSubmitting}>
+						{isSubmitting
+							? project
+								? 'Updating project...'
+								: 'Adding project...'
+							: project
+							? 'Update project'
+							: 'Add project'}
 					</Button>
 				</ArwFlex>
 			</ArwForm>

@@ -1,4 +1,5 @@
 // modules
+import { auth } from '@clerk/nextjs/server'
 import { twMerge } from 'tailwind-merge'
 import { type ClassValue, clsx } from 'clsx'
 import { ZodSchema } from 'zod'
@@ -8,6 +9,7 @@ import slugify from 'slugify'
 // lib
 import { getCurrentUser } from '@/lib/actions/user.actions'
 import { IUser } from '@/lib/models/user.model'
+import { routes } from '@/lib/constants/paths'
 
 // @func capitalizeFirstLetter
 // Capitalize first letter
@@ -18,18 +20,31 @@ export function capitalizeFirstLetter(str: string) {
 	return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
+// @func checkIsAdmin
+// Check if the current user is admin
+export function checkIsAdmin(): boolean {
+	const { sessionClaims } = auth()
+	return sessionClaims?.metadata.role === 'admin'
+}
+
+// @func checkIsOwner
+// Check if the current user is the owner
+export async function checkIsOwner(user: undefined | IUser): Promise<boolean> {
+	const currentUser = await getCurrentUser()
+	return user?._id === currentUser?._id
+}
+
 // @func cn
 // Class names merge with tailwind
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
 }
 
-// @func createFilesFormData
-// Create files form data
-export function createFilesFormData(file: File): FormData {
+// @func createFormDataFromFile
+// Create form data from file
+export function createFormDataFromFile(file: File): FormData {
 	const formData = new FormData()
 	formData.append('file', file)
-	formData.append('name', file.name)
 	return formData
 }
 
@@ -39,10 +54,11 @@ export function deepClone(obj: any) {
 	return JSON.parse(JSON.stringify(obj))
 }
 
-// @func findPrev
-// Find prev element
-export function findPrev<T>(array: T[], currentIndex: number) {
-	return currentIndex > 0 ? array[currentIndex - 1] : null
+// @func extractBaseRoute
+// Extract base route
+export function extractBaseRoute(pathname: string): string {
+	const parts = pathname.split('/')
+	return parts.length > 2 ? `/${parts[1]}` : pathname
 }
 
 // @func findNext
@@ -51,13 +67,10 @@ export function findNext<T>(array: T[], currentIndex: number) {
 	return currentIndex < array.length - 1 ? array[currentIndex + 1] : null
 }
 
-// @func checkIfCurrentUserIsOwner
-// Check if the current user is the owner
-export async function checkIfCurrentUserIsOwner(
-	user: undefined | IUser
-): Promise<boolean> {
-	const currentUser = await getCurrentUser()
-	return user?._id === currentUser?._id
+// @func findPrev
+// Find prev element
+export function findPrev<T>(array: T[], currentIndex: number) {
+	return currentIndex > 0 ? array[currentIndex - 1] : null
 }
 
 // @func generateUniqueSlug
@@ -95,6 +108,15 @@ export function generateUrl(
 	})
 }
 
+// @func getBaseRoute
+// Get base route
+export const getBaseRoute = (
+	profile: boolean | undefined,
+	admin: boolean | undefined
+) => {
+	return profile ? routes.PROFILE : admin ? routes.ADMIN : routes.PROJECTS
+}
+
 // @func loadImage
 // Load image
 export function loadImage(transformations: string) {
@@ -121,23 +143,6 @@ export function toStringArray(
 	} else {
 		return []
 	}
-}
-
-// @func validateData
-// Parse with zod schema
-export function validateData(
-	schema: ZodSchema,
-	data: any
-): Record<string, string> | null {
-	const result = schema.safeParse(data)
-
-	if (!result.success) {
-		const errors = Object.fromEntries(
-			result.error.errors.map((error) => [error.path, error.message])
-		)
-		return errors
-	}
-	return null
 }
 
 // @func transformImageUrl
@@ -171,4 +176,21 @@ export function updateUrlPath(newPath: string) {
 	const url = new URL(window.location.toString())
 	url.pathname = newPath
 	window.history.pushState({}, '', url.toString())
+}
+
+// @func validateData
+// Parse with zod schema
+export function validateData(
+	schema: ZodSchema,
+	data: any
+): Record<string, string> | null {
+	const result = schema.safeParse(data)
+
+	if (!result.success) {
+		const errors = Object.fromEntries(
+			result.error.errors.map((error) => [error.path, error.message])
+		)
+		return errors
+	}
+	return null
 }

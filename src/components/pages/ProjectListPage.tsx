@@ -1,10 +1,10 @@
 // modules
 import { Else, If, Then } from 'react-if'
 // components
-import { ArwContainer } from '@/components/arw'
+import ProjectsListSortable from '@/components/content/ProjectListSortable'
 import ProjectsList from '@/components/content/ProjectList'
 // lib
-import { DataResult } from '@/lib/types/results'
+import { DataResult } from '@/lib/types'
 import { getCategories } from '@/lib/actions/category.actions'
 import { getProjects } from '@/lib/actions/project.actions'
 import { ICategory } from '@/lib/models/category.model'
@@ -14,31 +14,39 @@ import { debug } from '@/lib/utils/dev'
 export default async function ProjectsListPage({
 	searchParams,
 	profile = false,
+	admin = false,
 }: {
 	searchParams: any
 	profile?: boolean
+	admin?: boolean
 }) {
 	debug(6, 9, searchParams)
+
 	const { data: projects }: DataResult<IProject[]> = await getProjects(
 		searchParams,
-		profile
+		profile,
 	)
 	const { data: categories }: DataResult<ICategory[]> = await getCategories()
 
 	return (
-		<If condition={projects.length === 0 && !profile}>
+		<If condition={(profile || admin) && !searchParams.sort}>
 			<Then>
-				<ArwContainer center>No projects</ArwContainer>
+				<ProjectsListSortable
+					projects={projects}
+					categories={categories}
+					searchParams={searchParams}
+					profile={profile}
+					admin={admin}
+				/>
 			</Then>
 			<Else>
-				<ArwContainer>
-					<ProjectsList
-						projects={projects}
-						categories={categories}
-						searchParams={searchParams}
-						profile={profile}
-					/>
-				</ArwContainer>
+				<ProjectsList
+					projects={projects}
+					categories={categories}
+					searchParams={searchParams}
+					profile={profile}
+					admin={admin}
+				/>
 			</Else>
 		</If>
 	)
