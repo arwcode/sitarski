@@ -84,7 +84,7 @@ export default function ProjectCard({
 					/>
 				</When>
 			</ArwFlex>
-			<ArwFlex row between>
+			<ArwFlex row between className="items-end">
 				{/* user */}
 				<ArwLink href={userLink}>
 					<ArwFlex row className="items-center gap-2 relative z-30">
@@ -100,7 +100,7 @@ export default function ProjectCard({
 				{/* category */}
 				<ArwLink href={categoryLink}>
 					<ArwFlex className="relative z-30">
-						<ArwText className="text-white hover:text-accent drop-shadow transition">
+						<ArwText className="text-white text-right hover:text-accent drop-shadow transition">
 							{capitalizeFirstLetter(project.category?.label)}
 						</ArwText>
 					</ArwFlex>
