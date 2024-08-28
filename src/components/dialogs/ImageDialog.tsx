@@ -57,8 +57,8 @@ export default function ImageDialog({
 				<Image
 					src={image?.url}
 					alt={image?.name}
-					width={1400}
-					height={1400}
+					width={2400}
+					height={1600}
 					onLoad={handleImageLoad}
 					className="w-auto h-auto max-h-screen md:max-h-screen-4 md:max-w-screen-4 object-cover"
 					priority
