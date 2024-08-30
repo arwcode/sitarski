@@ -14,7 +14,7 @@ export default async function ProjectsList({
 	categories,
 	searchParams,
 	profile,
-	admin
+	admin,
 }: {
 	projects: IProject[]
 	categories: ICategory[]
@@ -26,7 +26,7 @@ export default async function ProjectsList({
 	return (
 		<If condition={projects.length === 0 && (!profile || !admin)}>
 			<Then>
-				<ArwContainer center>No projects</ArwContainer>
+				<ArwContainer center>Brak projektów</ArwContainer>
 			</Then>
 			<Else>
 				<ArwContainer>
