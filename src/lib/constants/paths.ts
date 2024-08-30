@@ -1,12 +1,15 @@
 export const routes = {
 	ADD: '/add',
 	ADMIN: '/admin',
+	API_CLERK: '/api/clerk',
+	API_STRIPE: '/api/stripe',
 	CONTACT: '/contact',
+	HOME: '/',
 	OFFER: '/offer',
 	PROFILE: '/profile',
+	PROJECTS_SLUGS: '/projects/(.*)',
 	PROJECTS: '/projects',
 	SEARCH: '/search',
-	HOME: '/',
 }
 
 export const icons = {

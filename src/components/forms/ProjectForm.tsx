@@ -72,7 +72,7 @@ export default function ProjectForm({
 				// Create project
 				const createdProject = await handleCreateProject(projectFormData)
 				if (createdProject) {
-					router.push(generateUrl([routes.PROFILE, createdProject.slug]))
+					router.push(generateUrl([routes.ADMIN, createdProject.slug]))
 				}
 			}
 			if (handleClose) {

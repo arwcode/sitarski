@@ -30,10 +30,7 @@ export default function ProjectCard({
 		: null
 
 	return (
-		<ArwPaper
-			square
-			className="relative justify-between px-5 py-4 group max-lg:aspect-video overflow-hidden"
-		>
+		<ArwPaper className="relative justify-between px-5 py-4 group aspect-video lg:aspect-square overflow-hidden">
 			{/* cover */}
 			<div
 				className="absolute inset-0 group-hover:opacity-80 transition"

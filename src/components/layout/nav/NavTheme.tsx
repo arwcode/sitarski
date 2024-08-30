@@ -12,7 +12,7 @@ import { ArwIcon } from '@/components/arw'
 // lib
 import { Icons, Themes } from '@/lib/types/enums'
 
-export default function MenuTheme() {
+export default function NavTheme() {
 	const { setTheme } = useTheme()
 
 	const handleClick = (theme: string) => () => {

@@ -17,7 +17,7 @@ export const navigation: Nav[] = [
 		admin: true,
 	},
 	{
-		route: routes.HOME,
+		route: routes.PROJECTS,
 		label: 'Projekty',
 	},
 	{

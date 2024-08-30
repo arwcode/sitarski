@@ -20,9 +20,9 @@ export default function Menu({ isAdmin }: { isAdmin: boolean }) {
 
 	return (
 		<div className="flex-center">
-			<Navigation className="max-md:hidden" isAdmin={isAdmin} />
+			<Navigation className="max-lg:hidden" isAdmin={isAdmin} />
 			<Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen} modal>
-				<SheetTrigger className="md:hidden pr-3">
+				<SheetTrigger className="lg:hidden pr-3">
 					<ArwIcon
 						icon={Icons.Menu}
 						className="hover:text-accent transtion"

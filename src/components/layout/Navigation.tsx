@@ -32,9 +32,6 @@ export default function Navigation({
 						/>
 					)
 				})}
-				{/* <li>
-					<NavSorting />
-				</li> */}
 				<li className="flex-center">
 					<NavTheme />
 				</li>

@@ -31,6 +31,7 @@ export default async function ProjectsList({
 			<Else>
 				<ArwContainer>
 					<ArwGrid className="arw-grid-auto-300 gap-1 content-start">
+						{profile && <AddCard />}
 						{projects.map((project: IProject) => (
 							<ProjectCard
 								key={project._id}
@@ -41,7 +42,6 @@ export default async function ProjectsList({
 								admin={admin}
 							/>
 						))}
-						{profile && <AddCard />}
 					</ArwGrid>
 				</ArwContainer>
 			</Else>

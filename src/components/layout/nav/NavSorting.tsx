@@ -14,7 +14,7 @@ import { ArwIcon } from '@/components/arw'
 import { Icons, SortOptions } from '@/lib/types/enums'
 import { cn } from '@/lib/utils'
 
-export default function MenuSorting() {
+export default function NavSorting() {
 	const searchParams = useSearchParams()
 	const router = useRouter()
 
@@ -41,11 +41,7 @@ export default function MenuSorting() {
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<div className="flex-center cursor-pointer hover:text-accent max-md:gap-2">
-					<div className="flex-center w-[35px]">
-						<ArwIcon icon={Icons.ArrowDownUp} />
-					</div>
-					<div className="md:hidden">Sort options</div>
-					<div className="max-lg:hidden">Sort</div>
+					<ArwIcon icon={Icons.ArrowDownUp} />
 				</div>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="center" className="text-center mt-2">
@@ -60,12 +56,6 @@ export default function MenuSorting() {
 					onClick={handleClick(SortOptions.DATE)}
 				>
 					Sort by date
-				</DropdownMenuItem>
-				<DropdownMenuItem
-					className={cn(sortBy === SortOptions.USER && 'font-bold')}
-					onClick={handleClick(SortOptions.USER)}
-				>
-					Sort by user
 				</DropdownMenuItem>
 				<DropdownMenuItem
 					className={cn(sortBy === SortOptions.TITLE && 'font-bold')}
