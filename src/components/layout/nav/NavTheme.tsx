@@ -22,7 +22,7 @@ export default function NavTheme() {
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<div className="flex gap-2 cursor-pointer hover:text-accent">
-					<div className="flex-center w-[35px]">
+					<div className="flex-center">
 						<ArwIcon icon={Icons.Sun} className="flex dark:hidden" />
 						<ArwIcon icon={Icons.Moon} className="hidden dark:flex" />
 					</div>

@@ -63,7 +63,7 @@ export default function Uploader({
 								: 'bg-accent hover:bg-accent-600 transition duration-300 ease-in-out'
 						)}
 					>
-						<ArwFlex center className="grow">
+						<ArwFlex center className="grow gap-1">
 							<ArwIcon
 								size={50}
 								icon={Icons.CloudUpload}
