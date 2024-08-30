@@ -29,10 +29,7 @@ export default function Header() {
 				</div>
 
 				{/* center */}
-				<Menu isAdmin={isAdmin} />
-
-				{/* right */}
-				<div className="flex items-center z-50">
+				<div className="arw-absolute-center z-50">
 					<SignedIn>
 						<UserButton afterSignOutUrl="/" />
 					</SignedIn>
@@ -45,6 +42,9 @@ export default function Header() {
 						</Link>
 					</SignedOut>
 				</div>
+
+				{/* left */}
+				<Menu isAdmin={isAdmin} />
 			</div>
 		</header>
 	)

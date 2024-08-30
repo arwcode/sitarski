@@ -4,7 +4,12 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 // components
 import { ArwNavClose, ArwNavNext, ArwNavPrev, ArwText } from '@/components/arw'
-import { Dialog, DialogContent } from '@/components/ui/dialog'
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogTitle,
+} from '@/components/ui/dialog'
 // lib
 import { IImage } from '@/lib/models/image.model'
 import { debug } from '@/lib/utils/dev'
@@ -33,7 +38,7 @@ export default function ImageDialog({
 	useEffect(() => {
 		timerRef.current = setTimeout(() => {
 			setIsImageLoaded(false)
-		}, 200)
+		}, 1000)
 
 		return () => {
 			if (timerRef.current) {
@@ -45,7 +50,7 @@ export default function ImageDialog({
 	const handleImageLoad = () => {
 		if (timerRef.current) {
 			clearTimeout(timerRef.current)
-			setImageName(image?.name || '')
+			setImageName('')
 		}
 		setIsImageLoaded(true)
 	}
@@ -53,6 +58,8 @@ export default function ImageDialog({
 	return (
 		<Dialog open={isOpen} onOpenChange={handleClose}>
 			<DialogContent className="flex-center w-full h-full p-0 bg-transparent dark:bg-transparent close-button-hidden">
+				<DialogTitle className="hidden">Image</DialogTitle>
+				<DialogDescription className="hidden">Image</DialogDescription>
 				<div onClick={handleClose} className="absolute inset-0 z-20" />
 				<Image
 					src={image?.url}
@@ -84,7 +91,7 @@ export default function ImageDialog({
 					className="absolute top-3 right-3 z-50 arw-shadow-white dark:arw-shadow-black"
 				/>
 				<ArwText className="absolute bottom-4 md:bottom-6 arw-shadow-white dark:arw-shadow-black">
-					{isImageLoaded ? imageName : 'Loading...'}
+					{isImageLoaded ? imageName : 'Ładowanie...'}
 				</ArwText>
 			</DialogContent>
 		</Dialog>

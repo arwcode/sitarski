@@ -26,7 +26,7 @@ export default function MenuTheme() {
 						<ArwIcon icon={Icons.Sun} className="flex dark:hidden" />
 						<ArwIcon icon={Icons.Moon} className="hidden dark:flex" />
 					</div>
-					<div className="md:hidden">Theme</div>
+					<div className="hidden">Theme</div>
 				</div>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="center" className="text-center mt-2">

@@ -68,12 +68,12 @@ export default function ProjectsListSortable({
 				onDragEnd={handleDragEnd}
 			>
 				<SortableContext items={projectList.map((project) => project._id)}>
-					<div className="grid arw-grid-auto-300 gap-3">
+					<div className="grid arw-grid-auto-300 gap-1">
 						{projectList.map((project) => (
 							<SortableItem
 								key={project._id}
 								id={project._id}
-								className="right-2 top-1/2 -translate-y-1/2 drop-shadow text-white"
+								className="left-2 bottom-2 drop-shadow text-white"
 							>
 								<ProjectCard
 									project={project}

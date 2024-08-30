@@ -14,7 +14,6 @@ export const projectSchema = z.object({
 export const searchSchema = z.object({
 	title: z.string(),
 	category: z.string().optional(),
-	profile: z.boolean(),
 })
 
 export type SearchFormData = z.infer<typeof searchSchema>

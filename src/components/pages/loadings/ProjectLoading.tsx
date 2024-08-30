@@ -17,7 +17,7 @@ export default function ProjectLoading() {
 		<ArwContainer className="p-0 relative">
 			{/* top */}
 			<ArwFlex row between className="p-4">
-				<ArwTitle>Loading...</ArwTitle>
+				<ArwTitle>Ładowanie...</ArwTitle>
 				<ArwFlex row>
 					<ArwNavClose />
 				</ArwFlex>

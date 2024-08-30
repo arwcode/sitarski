@@ -19,10 +19,10 @@ export default function Menu({ isAdmin }: { isAdmin: boolean }) {
 	useSwipe({ SwipeUp: () => setIsSheetOpen(false) }, isSheetOpen)
 
 	return (
-		<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex-center w-full">
+		<div className="flex-center">
 			<Navigation className="max-md:hidden" isAdmin={isAdmin} />
 			<Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen} modal>
-				<SheetTrigger className="md:hidden">
+				<SheetTrigger className="md:hidden pr-3">
 					<ArwIcon
 						icon={Icons.Menu}
 						className="hover:text-accent transtion"

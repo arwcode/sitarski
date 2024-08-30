@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 // components
 import {
-	ArwCheckbox,
 	ArwFlex,
 	ArwForm,
 	ArwFormField,
@@ -39,17 +38,16 @@ export default function SearchForm({
 		defaultValues: {
 			title: '',
 			category: '',
-			profile: false,
 		},
 	})
 
-	const handleSubmit = ({ title, category, profile }: SearchFormData) => {
+	const handleSubmit = ({ title, category }: SearchFormData) => {
 		const queryParams: { [key: string]: string | undefined } = {}
 
 		if (title) queryParams.title = title
 		if (category) queryParams.category = category
 
-		const route = profile ? routes.PROFILE : routes.PROJECTS
+		const route = routes.PROJECTS
 		const url = generateUrl([route], queryParams)
 		router.push(url)
 	}
@@ -61,18 +59,18 @@ export default function SearchForm({
 			className="grow justify-between gap-8"
 		>
 			<ArwTitle center accent>
-				Search projects
+				Wyszukaj projekt
 			</ArwTitle>
 
 			<ArwFlex>
 				<ArwFormField
-					label="Title"
+					label="Tytuł"
 					name="title"
 					className="justify-center"
 					control={form.control}
 					render={({ field }) => (
 						<Input
-							placeholder="Enter a title"
+							placeholder="Wpisz tytuł"
 							className="text-center"
 							{...field}
 						/>
@@ -80,35 +78,22 @@ export default function SearchForm({
 				/>
 				<ArwFormField
 					control={form.control}
-					label="Category"
+					label="Kategoria"
 					name="category"
 					className="justify-center"
 					render={({ field }) => (
 						<ArwSelect
 							onValueChange={field.onChange}
-							placeholder="Select a category"
+							placeholder="Wybierz kategorię"
 							options={categoryOptions}
 							search
 							center
 						/>
 					)}
 				/>
-				<ArwFormField
-					name="profile"
-					label="My profile"
-					className="justify-center"
-					control={form.control}
-					render={({ field }) => (
-						<ArwCheckbox
-							checked={field.value}
-							onCheckedChange={field.onChange}
-							label="Show only my projects"
-						/>
-					)}
-				/>
 			</ArwFlex>
 			<ArwFlex>
-				<Button variant="accent">Search</Button>
+				<Button variant="accent">Wyszukaj</Button>
 			</ArwFlex>
 		</ArwForm>
 	)

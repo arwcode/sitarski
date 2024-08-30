@@ -31,7 +31,11 @@ export default function NavItem({
 
 	return (
 		<li
-			className={cn(isActive && 'text-accent', 'hover:text-accent transition')}
+			className={cn(
+				'flex-center',
+				isActive && 'text-accent',
+				'hover:text-accent transition '
+			)}
 			onClick={handleClick}
 		>
 			<Link
@@ -39,9 +43,7 @@ export default function NavItem({
 				href={item.route}
 			>
 				<ArwIcon className="w-[35px] flex-center" icon={item.icon} />
-				<ArwText className={cn(item.labelHide ? 'md:hidden lg:block' : '')}>
-					{item.label}
-				</ArwText>
+				<ArwText center>{item.label}</ArwText>
 			</Link>
 		</li>
 	)

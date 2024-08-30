@@ -15,12 +15,7 @@ import ProjectManipulations from '@/components/shared/manipulations/ProjectManip
 import ImageList from '@/components/content/ImageList'
 // lib
 import { Adjacent } from '@/lib/types'
-import {
-	checkIsAdmin,
-	checkIsOwner,
-	generateUrl,
-	getBaseRoute,
-} from '@/lib/utils'
+import { checkIsAdmin, generateUrl, getBaseRoute } from '@/lib/utils'
 import { DataResult } from '@/lib/types'
 import { debug } from '@/lib/utils/dev'
 import { getCategories } from '@/lib/actions/category.actions'
@@ -51,22 +46,14 @@ export default async function ProjectPage({
 		profile
 	)
 
-	const isOwner = await checkIsOwner(current?.user)
 	const isAdmin = checkIsAdmin()
 
 	// Generate URLs
 	const baseRoute = getBaseRoute(profile, admin)
+	const editUrl = generateUrl([routes.ADMIN, params.slug[0]], searchParams)
 	const urlPrev = prev && generateUrl([baseRoute, prev.slug], searchParams)
 	const urlNext = next && generateUrl([baseRoute, next.slug], searchParams)
 	const urlClose = generateUrl([baseRoute], searchParams)
-
-	const getEditUrl = () => {
-		if (isOwner)
-			return generateUrl([routes.PROFILE, params.slug[0]], searchParams)
-		if (isAdmin)
-			return generateUrl([routes.ADMIN, params.slug[0]], searchParams)
-		return null
-	}
 
 	return (
 		current && (
@@ -82,8 +69,8 @@ export default async function ProjectPage({
 					</ArwFlex>
 
 					<ArwFlex row className="justify-end shrink-0">
-						<When condition={!admin && !profile && getEditUrl()}>
-							<ArwNav url={getEditUrl()} icon={Icons.Pencil} size={20} />
+						<When condition={!admin && isAdmin}>
+							<ArwNav url={editUrl} icon={Icons.Pencil} size={20} />
 						</When>
 						<When condition={admin || profile}>
 							<ProjectManipulations project={current} categories={categories} />
@@ -105,7 +92,7 @@ export default async function ProjectPage({
 				<ArwFlex
 					row
 					between
-					className="sticky bottom-[0px] z-40 p-4 backdrop-blur-md"
+					className="sticky bottom-0 sm:bottom-[56px] z-40 p-4 backdrop-blur-md"
 				>
 					<ArwNavPrev url={urlPrev} keys />
 					<ArwText center>{current.info}</ArwText>
