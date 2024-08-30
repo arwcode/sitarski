@@ -42,7 +42,7 @@ export default function NavItem({
 				className="flex items-center justify-center max-md:justify-start max-md:gap-2"
 				href={item.route}
 			>
-				<ArwIcon className="w-[35px] flex-center" icon={item.icon} />
+				<ArwIcon className="flex-center" icon={item.icon} />
 				<ArwText center>{item.label}</ArwText>
 			</Link>
 		</li>
