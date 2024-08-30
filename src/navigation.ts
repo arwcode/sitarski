@@ -12,7 +12,6 @@ export type Nav = {
 export const navigation: Nav[] = [
 	{
 		route: routes.ADMIN,
-		icon: Icons.User,
 		label: 'Admin',
 		admin: true,
 	},
