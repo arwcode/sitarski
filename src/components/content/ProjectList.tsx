@@ -31,17 +31,17 @@ export default async function ProjectsList({
 			<Else>
 				<ArwContainer>
 					<ArwGrid className="arw-grid-auto-300 gap-1 content-start">
-						{profile && <AddCard />}
 						{projects.map((project: IProject) => (
 							<ProjectCard
-								key={project._id}
-								project={project}
-								categories={categories}
-								searchParams={searchParams}
-								profile={profile}
-								admin={admin}
+							key={project._id}
+							project={project}
+							categories={categories}
+							searchParams={searchParams}
+							profile={profile}
+							admin={admin}
 							/>
 						))}
+						{profile && <AddCard />}
 					</ArwGrid>
 				</ArwContainer>
 			</Else>

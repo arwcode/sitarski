@@ -41,7 +41,7 @@ export default function RootLayout({
 				variables: { colorPrimary: '#468' },
 			}}
 		>
-			<html lang="en">
+			<html lang="pl">
 				<body
 					className={cn(
 						'font-poppins antialiased bg-white dark:bg-base-900 text-black dark:text-white',

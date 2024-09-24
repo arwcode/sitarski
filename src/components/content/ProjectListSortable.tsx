@@ -69,7 +69,6 @@ export default function ProjectsListSortable({
 			>
 				<SortableContext items={projectList.map((project) => project._id)}>
 					<div className="grid arw-grid-auto-300 gap-1">
-						<AddCard />
 						{projectList.map((project) => (
 							<SortableItem
 								key={project._id}
@@ -85,6 +84,7 @@ export default function ProjectsListSortable({
 								/>
 							</SortableItem>
 						))}
+						<AddCard />
 					</div>
 				</SortableContext>
 			</DndContext>
