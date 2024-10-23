@@ -33,14 +33,6 @@ export default function Header() {
 					<SignedIn>
 						<UserButton afterSignOutUrl="/" />
 					</SignedIn>
-					<SignedOut>
-						<Link
-							href={`/sign-in`}
-							className="hover:text-accent transition px-2"
-						>
-							Login
-						</Link>
-					</SignedOut>
 				</div>
 
 				{/* left */}

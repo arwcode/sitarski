@@ -32,9 +32,9 @@ export default function Navigation({
 						/>
 					)
 				})}
-				<li className="flex-center">
+				{/* <li className="flex-center">
 					<NavTheme />
-				</li>
+				</li> */}
 			</ul>
 		</nav>
 	)
