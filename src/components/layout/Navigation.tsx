@@ -2,7 +2,6 @@
 import { useAuth } from '@clerk/nextjs'
 // components
 import NavItem from '@/components/layout/nav/NavItem'
-import NavTheme from '@/components/layout/nav/NavTheme'
 // lib
 import { navigation } from '@/navigation'
 import { cn } from '@/lib/utils'
@@ -32,9 +31,6 @@ export default function Navigation({
 						/>
 					)
 				})}
-				{/* <li className="flex-center">
-					<NavTheme />
-				</li> */}
 			</ul>
 		</nav>
 	)
