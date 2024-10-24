@@ -25,6 +25,10 @@ export const navigation: Nav[] = [
 
 	},
 	{
+		route: routes.ABOUT,
+		label: 'O pracowni',
+	},
+	{
 		route: routes.CONTACT,
 		label: 'Kontakt',
 	},

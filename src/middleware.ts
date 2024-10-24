@@ -3,6 +3,7 @@ import { routes } from '@/lib/constants/paths'
 
 export default authMiddleware({
 	publicRoutes: [
+		routes.ABOUT,
 		routes.API_CLERK,
 		routes.API_STRIPE,
 		routes.CONTACT,

@@ -1,4 +1,5 @@
 export const routes = {
+	ABOUT: '/about',
 	ADD: '/add',
 	ADMIN: '/admin',
 	API_CLERK: '/api/clerk',

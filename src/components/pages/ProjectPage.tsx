@@ -62,7 +62,7 @@ export default async function ProjectPage({
 				<ArwFlex
 					row
 					between
-					className="sticky top-[75px] z-40 p-4 backdrop-blur-md items-start"
+					className="sticky top-[75px] z-40 p-4 mx-4 backdrop-blur-md items-start"
 				>
 					<ArwFlex row className="justify-start">
 						<ArwTitle>{current.title}</ArwTitle>
@@ -92,7 +92,7 @@ export default async function ProjectPage({
 				<ArwFlex
 					row
 					between
-					className="sticky bottom-0 sm:bottom-[56px] z-40 p-4 backdrop-blur-md"
+					className="sticky bottom-0 z-40 p-4 mx-4 backdrop-blur-md"
 				>
 					<ArwNavPrev url={urlPrev} keys />
 					<ArwText center>{current.info}</ArwText>
