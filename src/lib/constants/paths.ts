@@ -22,4 +22,5 @@ export const icons = {
 
 export const images = {
 	IMAGE: '/images/image.png',
+	SITEK: '/images/sitek.jpg',
 }

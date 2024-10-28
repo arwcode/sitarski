@@ -32,8 +32,4 @@ export const navigation: Nav[] = [
 		route: routes.CONTACT,
 		label: 'Kontakt',
 	},
-	{
-		route: routes.SEARCH,
-		icon: Icons.Search,
-	},
 ]
