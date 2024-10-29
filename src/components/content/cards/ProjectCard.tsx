@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { When } from 'react-if'
 // components
-import { ArwFlex, ArwPaper, ArwText, ArwTitle } from '@/components/arw'
+import { ArwFlex, ArwPaper, ArwText } from '@/components/arw'
 import ProjectManipulations from '@/components/shared/manipulations/ProjectManipulations'
 // lib
 import { debug } from '@/lib/utils/dev'
