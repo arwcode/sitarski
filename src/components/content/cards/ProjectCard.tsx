@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { When } from 'react-if'
 // components
-import { ArwFlex, ArwPaper, ArwTitle } from '@/components/arw'
+import { ArwFlex, ArwPaper, ArwText, ArwTitle } from '@/components/arw'
 import ProjectManipulations from '@/components/shared/manipulations/ProjectManipulations'
 // lib
 import { debug } from '@/lib/utils/dev'
@@ -30,7 +30,7 @@ export default function ProjectCard({
 		: null
 
 	return (
-		<ArwPaper className="relative justify-between px-5 py-4 group aspect-video overflow-hidden">
+		<ArwPaper className="relative justify-between px-3 py-2 group aspect-video overflow-hidden">
 			{/* cover */}
 			<div
 				className="absolute inset-0 group-hover:opacity-80 transition"
@@ -47,13 +47,13 @@ export default function ProjectCard({
 			/>
 			<ArwFlex row between className="relative items-start">
 				{/* title */}
-				<ArwTitle
+				<ArwText
 					className={cn(
 						'text-transparent group-hover:text-white drop-shadow transition cursor-pointer relative z-10'
 					)}
 				>
 					{project.title}
-				</ArwTitle>
+				</ArwText>
 
 				{/* manipulation */}
 				<When condition={profile || admin}>

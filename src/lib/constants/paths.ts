@@ -23,4 +23,6 @@ export const icons = {
 export const images = {
 	IMAGE: '/images/image.png',
 	SITEK: '/images/sitek.jpg',
+	BYSTRA: '/images/bystra.jpg',
+	WIELICZKA: '/images/wieliczka.jpg',
 }

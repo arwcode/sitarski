@@ -22,7 +22,7 @@ export default function PageContent({
 			<ArwFlex className="md:flex-row border-b-2 border-base-800 pb-4">
 				{/* image */}
 				<ArwFlex className="w-full md:w-1/2">
-					<Image src={imageSrc} alt={imageAlt} width={800} height={400} />
+					<Image src={imageSrc} alt={imageAlt} width={1200} height={900} />
 				</ArwFlex>
 				{/* text */}
 				<ArwFlex className="grow justify-center items-center p-4">
@@ -31,7 +31,7 @@ export default function PageContent({
 			</ArwFlex>
 			<ArwFlex row className="max-md:flex-col grow">
 				{/* aside */}
-				<ArwFlex className="text-accent w-[125px]">{aside}</ArwFlex>
+				<ArwFlex row className="text-accent w-full md:w-[125px] justify-end max-md:text-right">{aside}</ArwFlex>
 				{/* content */}
 				<ArwFlex className="grow max-md:border-t-2 md:border-l-2 md:pl-6 max-md:pt-4 border-base-800">
 					{content}
