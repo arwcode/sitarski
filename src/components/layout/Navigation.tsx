@@ -1,10 +1,12 @@
 // modules
 import { useAuth } from '@clerk/nextjs'
 // components
+import { ArwIcon, ArwLink } from '@/components/arw'
 import NavItem from '@/components/layout/nav/NavItem'
 // lib
 import { navigation } from '@/navigation'
 import { cn } from '@/lib/utils'
+import { Icons } from '@/lib/types/enums'
 
 export default function Navigation({
 	setOpen,
@@ -31,6 +33,9 @@ export default function Navigation({
 						/>
 					)
 				})}
+				<ArwLink href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843" className="flex-center">
+					<ArwIcon icon={Icons.Facebook} />
+				</ArwLink>
 			</ul>
 		</nav>
 	)

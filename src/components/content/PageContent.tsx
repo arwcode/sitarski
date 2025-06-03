@@ -31,7 +31,7 @@ export default function PageContent({
 			</ArwFlex>
 			<ArwFlex row className="max-md:flex-col grow">
 				{/* aside */}
-				<ArwFlex row className="text-accent w-full md:w-[125px] justify-end max-md:text-right">{aside}</ArwFlex>
+				<ArwFlex row className="text-accent w-full md:w-[125px] shrink-0 justify-end max-md:text-right">{aside}</ArwFlex>
 				{/* content */}
 				<ArwFlex className="grow max-md:border-t-2 md:border-l-2 md:pl-6 max-md:pt-4 border-base-800">
 					{content}

@@ -11,17 +11,17 @@ export default function Header() {
 	const isAdmin = checkIsAdmin()
 
 	return (
-		<header className="sticky z-50 top-0 backdrop-blur-md bg-base-200/50 dark:bg-base-950/50 shadow-md p-4 h-[75px] flex-center">
+		<header className="sticky z-50 top-0 backdrop-blur-md bg-base-200/50 dark:bg-base-950/50 shadow-md p-4 h-[100px] flex-center">
 			<div className="container flex justify-between p-0 xl:px-4">
 				{/* left */}
 				<div className="flex items-center z-50">
 					<h1 className="text-2xl font-bold">
 						<ArwLink href={`/`}>
 							<Image
-								src="/images/logo.jpg"
+								src="/images/logo.png"
 								alt="Logo"
-								width={132}
-								height={75}
+								width={100}
+								height={100}
 							/>
 						</ArwLink>
 					</h1>

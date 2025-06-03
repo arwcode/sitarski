@@ -1,5 +1,5 @@
 // components
-import { ArwFlex, ArwTitle } from '@/components/arw'
+import { ArwFlex, ArwText, ArwTitle } from '@/components/arw'
 import PageContent from '@/components/content/PageContent'
 // lib
 import { images } from '@/lib/constants/paths'
@@ -23,15 +23,18 @@ export default function OfferPage() {
 				</ArwFlex>
 			}
 			aside={
-				<ArwFlex>
+				<ArwFlex className="leading-loose"> 
 					<p>pomysł</p>
 					<p>oryginalność</p>
 					<p>indywidualność</p>
 				</ArwFlex>
 			}
 			content={
-				<ArwFlex>
-					<ArwTitle>O pracowni</ArwTitle>
+				// prettier-ignore
+				<ArwFlex className="text-justify leading-loose">
+					<ArwText >
+						Nasze podejście to nie tylko wizja i estetyka, ale też realne innowacje technologiczne. Już w 2001 roku, w ramach projektu <strong>Dom na Chełmie</strong>, po raz pierwszy w Polsce zastosowaliśmy <strong>wielkoformatowe okno z niewidoczną ramą w konstrukcji domu z bali drewnianych</strong> - rozwiązanie, które wtedy wyprzedzało standardowe rozwiązania stosowane w konstrukcjach drewnianych (góralskich). Z kolei w projekcie <strong>Dom w Bystrej Krakowskiej</strong> (2005) opracowaliśmy i wdrożyliśmy unikalne połączenie <strong>drewnianych bali jako wypełnienia sztywnej konstrukcji ramowej z żelbetu</strong>, tworząc spójną, trwałą i nowoczesną hybrydę konstrukcyjną, która do dziś pozostaje rzadkością w polskiej architekturze jednorodzinnej.
+					</ArwText>
 				</ArwFlex>
 			}
 		/>

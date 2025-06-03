@@ -30,14 +30,14 @@ export default async function OfferPage() {
 				</ArwFlex>
 			}
 			aside={
-				<ArwFlex>
+				<ArwFlex className="leading-loose">
 					<p>pomysł</p>
 					<p>oryginalność</p>
 					<p>indywidualność</p>
 				</ArwFlex>
 			}
 			content={
-				<ArwFlex>
+				<ArwFlex className="leading-loose">
 					<h1>Oferta:</h1>
 					<ul className="list-disc pl-5 space-y-4">
 						{categories.map((category) => (
