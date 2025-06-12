@@ -1,16 +1,11 @@
 'use client'
+// modules
 import { useEffect, useRef, useState } from 'react'
-import { createPost, updatePost } from '@/lib/actions/post.actions'
+// components
 import { Button } from '@/components/ui/button'
-import {
-	Dialog,
-	DialogContent,
-	DialogHeader,
-	DialogTitle,
-	DialogFooter,
-	DialogDescription,
-	DialogClose,
-} from '@/components/ui/dialog'
+import { PostDialog } from '@/components/dialogs/PostDialog'
+// lib
+import { createPost, updatePost } from '@/lib/actions/post.actions'
 
 export function PostForm({ post }: { post?: any }) {
 	const action = post ? updatePost : createPost
@@ -43,14 +38,14 @@ export function PostForm({ post }: { post?: any }) {
 					value={title}
 					onChange={(e) => setTitle(e.target.value)}
 					placeholder="Tytuł"
-					className="py-2 px-4 w-full text-xl font-bold rounded"
+					className="p-3 w-full text-xl font-bold rounded outline-none focus:outline-dashed focus:outline-2 focus:outline-accent focus:outline-offset-0"
 				/>
 				<textarea
 					name="content"
 					value={content}
 					onChange={(e) => setContent(e.target.value)}
 					placeholder="Treść"
-					className="py-2 px-4 w-full rounded flex-1 resize-none text-justify h-[calc(100vh-400px)]"
+					className="py-2 px-3 w-full rounded flex-1 resize-none text-justify outline-none focus:outline-dashed focus:outline-2 focus:outline-accent focus:outline-offset-0"
 				/>
 				{post && <input type="hidden" name="slug" value={post.slug} />}
 				<Button variant="accent">
@@ -58,19 +53,7 @@ export function PostForm({ post }: { post?: any }) {
 				</Button>
 			</form>
 
-			<Dialog open={isOpen} onOpenChange={setIsOpen}>
-				<DialogContent>
-					<DialogHeader>
-						<DialogTitle>Nieprawidłowe dane</DialogTitle>
-						<DialogDescription>
-							Proszę wypełnić zarówno tytuł, jak i treść.
-						</DialogDescription>
-					</DialogHeader>
-					<DialogFooter className="mt-4">
-						<Button onClick={() => setIsOpen(false)}>OK</Button>
-					</DialogFooter>
-				</DialogContent>
-			</Dialog>
+			<PostDialog open={isOpen} onClose={() => setIsOpen(false)} />
 		</>
 	)
 }

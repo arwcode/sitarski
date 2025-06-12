@@ -23,8 +23,10 @@ export default async function PostListPage() {
 					</li>
 				))}
 				<li>
-					<ArwLink className="px-2" href={`${routes.POSTS}/new`}>
-						+ Nowy post
+					<ArwLink href={`${routes.POSTS}/new`}>
+						<ArwPaper className="px-2 border border-dashed border-accent text-accent hover:text-accent-200 text-center transition">
+							<ArwTitle>+ Nowy post</ArwTitle>
+						</ArwPaper>
 					</ArwLink>
 				</li>
 			</ul>
