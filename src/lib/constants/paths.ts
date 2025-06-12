@@ -7,6 +7,7 @@ export const routes = {
 	CONTACT: '/contact',
 	HOME: '/',
 	OFFER: '/offer',
+	POSTS: '/posts',
 	PROFILE: '/profile',
 	PROJECTS_SLUGS: '/projects/(.*)',
 	PROJECTS: '/projects',

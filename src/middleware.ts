@@ -6,6 +6,7 @@ export default authMiddleware({
 		routes.ABOUT,
 		routes.API_CLERK,
 		routes.API_STRIPE,
+		routes.POSTS,
 		routes.CONTACT,
 		routes.HOME,
 		routes.OFFER,

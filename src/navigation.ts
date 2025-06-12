@@ -22,7 +22,6 @@ export const navigation: Nav[] = [
 	{
 		route: routes.OFFER,
 		label: 'Oferta',
-
 	},
 	{
 		route: routes.ABOUT,
@@ -31,5 +30,9 @@ export const navigation: Nav[] = [
 	{
 		route: routes.CONTACT,
 		label: 'Kontakt',
+	},
+	{
+		route: routes.POSTS,
+		label: 'Blog',
 	},
 ]

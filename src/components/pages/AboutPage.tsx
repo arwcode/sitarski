@@ -3,8 +3,10 @@ import { ArwFlex, ArwText, ArwTitle } from '@/components/arw'
 import PageContent from '@/components/content/PageContent'
 // lib
 import { images } from '@/lib/constants/paths'
+import { debug } from '@/lib/utils/dev'
 
-export default function OfferPage() {
+export default function AboutPage() {
+	debug(6)
 	return (
 		<PageContent
 			imageAlt="Sitek"
@@ -23,7 +25,7 @@ export default function OfferPage() {
 				</ArwFlex>
 			}
 			aside={
-				<ArwFlex className="leading-loose"> 
+				<ArwFlex className="leading-loose">
 					<p>pomysł</p>
 					<p>oryginalność</p>
 					<p>indywidualność</p>
