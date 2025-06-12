@@ -48,7 +48,7 @@ export function PostForm({ post }: { post?: any }) {
 					className="py-2 px-3 w-full rounded flex-1 resize-none text-justify outline-none focus:outline-dashed focus:outline-1 focus:outline-accent focus:outline-offset-0"
 				/>
 				{post && <input type="hidden" name="slug" value={post.slug} />}
-				<Button variant="accent" className="text-xl p-6">
+				<Button variant="accent" className="text-md p-6">
 					{post ? 'Zapisz zmiany' : 'Dodaj post'}
 				</Button>
 			</form>

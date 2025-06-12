@@ -18,7 +18,7 @@ type PostDialogProps = {
 export default function PostFormDialog({ open, onClose }: PostDialogProps) {
 	return (
 		<Dialog open={open} onOpenChange={onClose}>
-			<DialogContent>
+			<DialogContent className="close-button-hidden">
 				<DialogHeader>
 					<DialogTitle>Nieprawidłowe dane</DialogTitle>
 					<DialogDescription>

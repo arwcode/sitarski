@@ -29,21 +29,25 @@ export default function PostDeleteDialog({ slug }: { slug: string }) {
 			</button>
 
 			<Dialog open={open} onOpenChange={setOpen}>
-				<DialogContent>
+				<DialogContent className="close-button-hidden">
 					<DialogHeader>
 						<DialogTitle>Potwierdzenie usunięcia</DialogTitle>
-						<DialogDescription>
+						<DialogDescription className="text-center">
 							Tej operacji nie można cofnąć.
 						</DialogDescription>
 					</DialogHeader>
 					<DialogFooter className="mt-4 gap-2">
 						<form action={deletePostBySlug}>
 							<input type="hidden" name="slug" value={slug} />
-							<Button variant="destructive" type="submit">
+							<Button variant="destructive" className="w-full" type="submit">
 								Usuń
 							</Button>
 						</form>
-						<Button variant="outline" onClick={() => setOpen(false)}>
+						<Button
+							variant="outline"
+							className="w-full"
+							onClick={() => setOpen(false)}
+						>
 							Anuluj
 						</Button>
 					</DialogFooter>
