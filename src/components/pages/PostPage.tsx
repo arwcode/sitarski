@@ -1,5 +1,5 @@
 // modules
-import { Edit, Trash, ArrowLeft } from 'lucide-react'
+import { Edit, ArrowLeft } from 'lucide-react'
 // components
 import {
 	ArwContainer,
@@ -9,9 +9,10 @@ import {
 	ArwText,
 	ArwTitle,
 } from '@/components/arw'
+import PostDeleteDialog from '@/components/dialogs/PostDeleteDialog'
 // lib
 import { debug } from '@/lib/utils/dev'
-import { getPostBySlug, deletePostBySlug } from '@/lib/actions/post.actions'
+import { getPostBySlug } from '@/lib/actions/post.actions'
 import { routes } from '@/lib/constants/paths'
 
 export default async function PostPage({
@@ -35,7 +36,7 @@ export default async function PostPage({
 								href={routes.POSTS}
 								className="text-gray-500 hover:text-accent flex items-center"
 							>
-								<ArrowLeft size={22} />
+								<ArrowLeft size={25} />
 							</ArwLink>
 							<ArwLink
 								href={`${routes.POSTS}/${post.slug}/edit`}
@@ -44,15 +45,7 @@ export default async function PostPage({
 								<Edit size={22} />
 							</ArwLink>
 							<ArwFlex>
-								<form action={deletePostBySlug}>
-									<input type="hidden" name="slug" value={post.slug} />
-									<button
-										type="submit"
-										className="text-gray-500 hover:text-red-600 flex items-center"
-									>
-										<Trash size={21} />
-									</button>
-								</form>
+								<PostDeleteDialog slug={post.slug} />
 							</ArwFlex>
 						</ArwFlex>
 					</ArwFlex>

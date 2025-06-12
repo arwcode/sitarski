@@ -15,7 +15,7 @@ type PostDialogProps = {
 	onClose: () => void
 }
 
-export function PostDialog({ open, onClose }: PostDialogProps) {
+export default function PostFormDialog({ open, onClose }: PostDialogProps) {
 	return (
 		<Dialog open={open} onOpenChange={onClose}>
 			<DialogContent>

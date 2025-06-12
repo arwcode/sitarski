@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 // components
 import { Button } from '@/components/ui/button'
-import { PostDialog } from '@/components/dialogs/PostDialog'
+import PostFormDialog from '@/components/dialogs/PostFormDialog'
 // lib
 import { createPost, updatePost } from '@/lib/actions/post.actions'
 
@@ -38,22 +38,22 @@ export function PostForm({ post }: { post?: any }) {
 					value={title}
 					onChange={(e) => setTitle(e.target.value)}
 					placeholder="Tytuł"
-					className="p-3 w-full text-xl font-bold rounded outline-none focus:outline-dashed focus:outline-2 focus:outline-accent focus:outline-offset-0"
+					className="p-3 w-full text-2xl font-bold rounded outline-none focus:outline-dashed focus:outline-1 focus:outline-accent focus:outline-offset-0"
 				/>
 				<textarea
 					name="content"
 					value={content}
 					onChange={(e) => setContent(e.target.value)}
 					placeholder="Treść"
-					className="py-2 px-3 w-full rounded flex-1 resize-none text-justify outline-none focus:outline-dashed focus:outline-2 focus:outline-accent focus:outline-offset-0"
+					className="py-2 px-3 w-full rounded flex-1 resize-none text-justify outline-none focus:outline-dashed focus:outline-1 focus:outline-accent focus:outline-offset-0"
 				/>
 				{post && <input type="hidden" name="slug" value={post.slug} />}
-				<Button variant="accent">
+				<Button variant="accent" className="text-xl p-6">
 					{post ? 'Zapisz zmiany' : 'Dodaj post'}
 				</Button>
 			</form>
 
-			<PostDialog open={isOpen} onClose={() => setIsOpen(false)} />
+			<PostFormDialog open={isOpen} onClose={() => setIsOpen(false)} />
 		</>
 	)
 }
