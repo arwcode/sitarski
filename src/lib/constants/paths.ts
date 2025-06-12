@@ -8,6 +8,7 @@ export const routes = {
 	HOME: '/',
 	OFFER: '/offer',
 	POSTS: '/posts',
+	POSTS_SLUGS: '/posts/(.*)',
 	PROFILE: '/profile',
 	PROJECTS_SLUGS: '/projects/(.*)',
 	PROJECTS: '/projects',
