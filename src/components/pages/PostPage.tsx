@@ -34,13 +34,13 @@ export default async function PostPage({
 						<ArwFlex row>
 							<ArwLink
 								href={routes.POSTS}
-								className="text-gray-500 hover:text-accent flex items-center"
+								className="hover:text-accent transition flex items-center"
 							>
 								<ArrowLeft size={25} />
 							</ArwLink>
 							<ArwLink
 								href={`${routes.POSTS}/${post.slug}/edit`}
-								className="text-gray-500 hover:text-blue-600 flex items-center"
+								className="hover:text-blue-600 transition flex items-center"
 							>
 								<Edit size={22} />
 							</ArwLink>

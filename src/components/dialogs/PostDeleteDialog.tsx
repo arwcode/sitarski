@@ -23,7 +23,7 @@ export default function PostDeleteDialog({ slug }: { slug: string }) {
 			<button
 				type="button"
 				onClick={() => setOpen(true)}
-				className="text-gray-500 hover:text-red-600 flex items-center"
+				className="hover:text-red-600 transition flex items-center"
 			>
 				<Trash size={22} />
 			</button>
