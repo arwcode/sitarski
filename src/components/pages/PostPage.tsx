@@ -33,7 +33,7 @@ export default async function PostPage({
 			<ArwFlex className="grow">
 				<ArwPaper className="px-6">
 					<ArwFlex row between>
-						<ArwTitle>{post.title}</ArwTitle>
+						<ArwText>{post.title}</ArwText>
 						<ArwFlex row>
 							{/* back */}
 							<ArwLink
