@@ -18,7 +18,7 @@ export default async function OfferPage() {
 			imageSrc={images.BYSTRA}
 			text={
 				<ArwFlex className="gap-1">
-					<p className="md:text-xl text-gray italic">
+					<p className="md:text-2xl text-gray italic">
 						Architekt to jednostka ludzka,
 					</p>
 					<p className="md:text-2xl text-gray-300 italic md:ml-[100px]">

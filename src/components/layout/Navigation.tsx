@@ -1,7 +1,7 @@
 // modules
 import { useAuth } from '@clerk/nextjs'
 // components
-import { ArwIcon } from '@/components/arw'
+import { ArwIcon, ArwLink } from '@/components/arw'
 import NavItem from '@/components/layout/nav/NavItem'
 import Link from 'next/link'
 
@@ -35,15 +35,15 @@ export default function Navigation({
 						/>
 					)
 				})}
-				<Link href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843" className="flex-center">
+				<ArwLink href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843" className="flex-center">
 					<ArwIcon icon={Icons.Facebook} />
-				</Link>
-				<Link href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843" className="flex-center">
+				</ArwLink>
+				<ArwLink href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843" className="flex-center">
 					<ArwIcon icon={Icons.Instagram} />
-				</Link>
-				<Link href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843" className="flex-center">
+				</ArwLink>
+				<ArwLink href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843" className="flex-center">
 					<ArwIcon icon={Icons.Linkedin} />
-				</Link>
+				</ArwLink>
 			</ul>
 		</nav>
 	)

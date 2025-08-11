@@ -13,7 +13,7 @@ export default function AboutPage() {
 			imageSrc={images.SITEK}
 			text={
 				<ArwFlex className="gap-1">
-					<p className="md:text-xl text-gray italic">
+					<p className="md:text-2xl text-gray italic">
 						Architekt to jednostka ludzka,
 					</p>
 					<p className="md:text-2xl text-gray-300 italic md:ml-[100px]">
