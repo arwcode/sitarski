@@ -24,9 +24,10 @@ export default function ContactPage() {
 				<ArwFlex className="grow justify-center md:items-end p-4 gap-1">
 					<p>Pracownia Architektoniczna</p>
 					<p>Bartlomiej K. Sitarski</p>
+					<p></p>
 					<p>ul. Sosnowiecka 4</p>
 					<p>31-345 Krakow</p>
-					<p>tel. 601-965-606</p>
+					<p className="text-accent">tel. 601-965-606</p>
 					<p></p>
 					<p>
 						<ArwLink href="mailto:pracownia@barteksitarski.pl">
