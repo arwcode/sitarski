@@ -17,29 +17,29 @@ export default async function OfferPage() {
 			imageAlt="Dom jednorodzinny"
 			imageSrc={images.BYSTRA}
 			text={
-				<ArwFlex>
-					<p className="text-xl text-gray">
-						&quot;Architekt to jednostka ludzka,
+				<ArwFlex className="gap-1">
+					<p className="md:text-xl text-gray italic">
+						Architekt to jednostka ludzka,
 					</p>
-					<p className="text-2xl text-gray-300 italic ml-[100px]">
+					<p className="md:text-2xl text-gray-300 italic md:ml-[100px]">
 						która spełnia marzenia
 					</p>
-					<p className="text-2xl font-bold">
-						i rozwiązuje problemy innych.&quot;
+					<p className="md:text-2xl italic">
+						i rozwiązuje problemy innych.
 					</p>
 				</ArwFlex>
 			}
 			aside={
-				<ArwFlex className="leading-loose">
+				<ArwFlex className="gap-1">
 					<p>pomysł</p>
 					<p>oryginalność</p>
 					<p>indywidualność</p>
 				</ArwFlex>
 			}
 			content={
-				<ArwFlex className="leading-loose">
+				<ArwFlex className="gap-1">
 					<h1>Oferta:</h1>
-					<ul className="list-disc pl-5 space-y-4">
+					<ul className="list-disc pl-5 space-y-1">
 						{categories.map((category) => (
 							<li key={category.label}>
 								<ArwLink
