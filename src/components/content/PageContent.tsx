@@ -14,8 +14,8 @@ export default function PageContent({
 	imageSrc: string
 	imageAlt: string
 	text: ReactNode
-	aside: ReactNode
-	content: ReactNode
+	aside?: ReactNode
+	content?: ReactNode
 }) {
 	return (
 		<ArwContainer className="grow gap-4">
