@@ -24,7 +24,7 @@ export default function Menu({ isAdmin }: { isAdmin: boolean }) {
 			<Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen} modal>
 				<SheetTrigger className="lg:hidden pr-3">
 					<ArwIcon
-						icon={Icons.Menu}
+						icon={Icons.Grip}
 						className="hover:text-accent transtion"
 						size={30}
 					/>

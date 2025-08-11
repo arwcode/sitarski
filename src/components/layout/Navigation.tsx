@@ -21,7 +21,7 @@ export default function Navigation({
 
 	return (
 		<nav className={cn('flex-center', className)}>
-			<ul className="flex max-md:flex-col gap-6 md:gap-4">
+			<ul className="flex max-md:flex-col gap-4">
 				{navigation.map((item) => {
 					return (
 						<NavItem

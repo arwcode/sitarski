@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 export enum Icons {
+	AlignJustify = 'AlignJustify',
 	ArrowDownUp = 'ArrowDownUp',
 	ChevronLeft = 'ChevronLeft',
 	ChevronRight = 'ChevronRight',
