@@ -1,6 +1,12 @@
 // modules
 // components
-import { ArwContainer, ArwLink, ArwPaper, ArwTitle } from '@/components/arw'
+import {
+	ArwContainer,
+	ArwLink,
+	ArwPaper,
+	ArwText,
+	ArwTitle,
+} from '@/components/arw'
 // lib
 import { debug } from '@/lib/utils/dev'
 import { getPosts } from '@/lib/actions/post.actions'
@@ -22,11 +28,14 @@ export default async function PostListPage() {
 				</li> */}
 				{posts?.map((post: any) => (
 					<li key={post._id}>
-						<ArwLink href={`${routes.POSTS}/${post.slug}`}>
-							<ArwPaper>
-								<ArwTitle className="px-2">{post.title}</ArwTitle>
-							</ArwPaper>
-						</ArwLink>
+						<>
+							<ArwLink href={`${routes.POSTS}/${post.slug}`}>
+								<ArwPaper>
+									<ArwTitle className="px-2">{post.title}</ArwTitle>
+								</ArwPaper>
+							</ArwLink>
+							<ArwText className="text-justify">{post.content}</ArwText>
+						</>
 					</li>
 				))}
 			</ul>
