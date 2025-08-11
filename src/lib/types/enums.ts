@@ -11,6 +11,8 @@ export enum Icons {
 	Home = 'Home',
 	ImageDown = 'ImageDown',
 	ImageUp = 'ImageUp',
+	Instagram = 'Instagram',
+	Linkedin = 'Linkedin',
 	Menu = 'Menu',
 	Moon = 'Moon',
 	Pencil = 'Pencil',

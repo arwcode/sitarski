@@ -36,6 +36,12 @@ export default function Navigation({
 				<ArwLink href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843" className="flex-center">
 					<ArwIcon icon={Icons.Facebook} />
 				</ArwLink>
+				<ArwLink href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843" className="flex-center">
+					<ArwIcon icon={Icons.Instagram} />
+				</ArwLink>
+				<ArwLink href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843" className="flex-center">
+					<ArwIcon icon={Icons.Linkedin} />
+				</ArwLink>
 			</ul>
 		</nav>
 	)
