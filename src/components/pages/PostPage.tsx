@@ -40,7 +40,7 @@ export default async function PostPage({
 								href={routes.POSTS}
 								className="hover:text-accent transition flex items-center"
 							>
-								<ArrowLeft size={25} />
+								<ArrowLeft size={24} />
 							</ArwLink>
 							<When condition={isAdmin}>
 								{/* edit */}
