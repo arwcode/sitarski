@@ -1,6 +1,5 @@
 // components
 import { ArwContainer, ArwFlex, ArwLink } from '@/components/arw'
-import PageContent from '@/components/content/PageContent'
 // lib
 import { images } from '@/lib/constants/paths'
 import { debug } from '@/lib/utils/dev'
@@ -23,7 +22,7 @@ export default function ContactPage() {
 				{/* text */}
 				<ArwFlex className="grow justify-center md:items-end p-4 gap-1">
 					<p>Pracownia Architektoniczna</p>
-					<p>Bartlomiej K. Sitarski</p>
+					<p>Bartłomiej K. Sitarski</p>
 					<p></p>
 					<p>ul. Sosnowiecka 4</p>
 					<p>31-345 Krakow</p>
