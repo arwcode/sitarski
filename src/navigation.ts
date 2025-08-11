@@ -35,8 +35,4 @@ export const navigation: Nav[] = [
 		route: routes.POSTS,
 		label: 'Blog',
 	},
-		{
-		route: routes.POSTS,
-		label: 'New post',
-	},
 ]

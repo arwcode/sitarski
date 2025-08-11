@@ -1,4 +1,5 @@
 // modules
+import { When } from 'react-if'
 // components
 import {
 	ArwContainer,
@@ -11,21 +12,25 @@ import {
 import { debug } from '@/lib/utils/dev'
 import { getPosts } from '@/lib/actions/post.actions'
 import { routes } from '@/lib/constants/paths'
+import { checkIsAdmin } from '@/lib/utils'
 
 export default async function PostListPage() {
 	debug(6)
 	const posts = await getPosts()
+	const isAdmin = checkIsAdmin()
 
 	return (
 		<ArwContainer>
 			<ul className="space-y-4">
-				{/* <li>
-					<ArwLink href={`${routes.POSTS}/new`}>
-						<ArwPaper className="px-2 border border-dashed border-accent text-accent hover:text-white text-center transition">
-							<ArwTitle>+ Nowy post</ArwTitle>
-						</ArwPaper>
-					</ArwLink>
-				</li> */}
+				<When condition={isAdmin}>
+					<li>
+						<ArwLink href={`${routes.POSTS}/new`}>
+							<ArwPaper className="px-2 border border-dashed border-accent text-accent hover:text-white text-center transition">
+								<ArwTitle>+ Nowy post</ArwTitle>
+							</ArwPaper>
+						</ArwLink>
+					</li>
+				</When>
 				{posts?.map((post: any) => (
 					<li key={post._id}>
 						<>
@@ -34,7 +39,6 @@ export default async function PostListPage() {
 									<ArwTitle className="px-2">{post.title}</ArwTitle>
 								</ArwPaper>
 							</ArwLink>
-							<ArwText className="text-justify">{post.content}</ArwText>
 						</>
 					</li>
 				))}
