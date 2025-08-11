@@ -38,7 +38,7 @@ export function PostForm({ post }: { post?: any }) {
 					value={title}
 					onChange={(e) => setTitle(e.target.value)}
 					placeholder="Tytuł"
-					className="p-3 w-full text-2xl font-bold rounded outline-none focus:outline-dashed focus:outline-1 focus:outline-accent focus:outline-offset-0"
+					className="p-3 w-full font-bold rounded outline-none focus:outline-dashed focus:outline-1 focus:outline-accent focus:outline-offset-0"
 				/>
 				<textarea
 					name="content"
