@@ -6,6 +6,7 @@ import { ArwLink } from '@/components/arw'
 import Menu from '@/components/layout/Menu'
 // lib
 import { checkIsAdmin } from '@/lib/utils'
+import { images } from '@/lib/constants/paths'
 
 export default function Header() {
 	const isAdmin = checkIsAdmin()
@@ -18,7 +19,7 @@ export default function Header() {
 					<h1 className="text-2xl font-bold">
 						<ArwLink href={`/`}>
 							<Image
-								src="/images/logo.png"
+								src={images.LOGO}
 								alt="Logo"
 								width={75}
 								height={75}
