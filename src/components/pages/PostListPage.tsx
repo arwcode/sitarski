@@ -13,13 +13,13 @@ export default async function PostListPage() {
 	return (
 		<ArwContainer>
 			<ul className="space-y-4">
-				<li>
+				{/* <li>
 					<ArwLink href={`${routes.POSTS}/new`}>
 						<ArwPaper className="px-2 border border-dashed border-accent text-accent hover:text-white text-center transition">
 							<ArwTitle>+ Nowy post</ArwTitle>
 						</ArwPaper>
 					</ArwLink>
-				</li>
+				</li> */}
 				{posts?.map((post: any) => (
 					<li key={post._id}>
 						<ArwLink href={`${routes.POSTS}/${post.slug}`}>
