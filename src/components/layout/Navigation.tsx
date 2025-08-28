@@ -35,13 +35,22 @@ export default function Navigation({
 						/>
 					)
 				})}
-				<ArwLink href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843" className="flex-center">
+				<ArwLink
+					href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843"
+					className="flex-center"
+				>
 					<ArwIcon icon={Icons.Facebook} />
 				</ArwLink>
-				<ArwLink href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843" className="flex-center">
+				<ArwLink
+					href="https://www.instagram.com/bartlomiejsitarski/?igsh=MXJrOXczaW1qd3Rndg#"
+					className="flex-center"
+				>
 					<ArwIcon icon={Icons.Instagram} />
 				</ArwLink>
-				<ArwLink href="https://www.facebook.com/Pracownia-architektoniczna-Bartłomiej-K-Sitarski-109479105878843" className="flex-center">
+				<ArwLink
+					href="https://www.linkedin.com/in/bart%C5%82omiej-sitarski-902224313"
+					className="flex-center"
+				>
 					<ArwIcon icon={Icons.Linkedin} />
 				</ArwLink>
 			</ul>
