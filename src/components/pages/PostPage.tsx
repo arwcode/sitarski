@@ -8,7 +8,6 @@ import {
 	ArwLink,
 	ArwPaper,
 	ArwText,
-	ArwTitle,
 } from '@/components/arw'
 import PostDeleteDialog from '@/components/dialogs/PostDeleteDialog'
 // lib
@@ -31,7 +30,6 @@ export default async function PostPage({
 	return (
 		<ArwContainer>
 			<ArwFlex className="grow">
-				{/* Górny pasek z tytułem i akcjami */}
 				<ArwPaper className="px-6">
 					<ArwFlex row between>
 						<ArwText className="font-bold text-xl">{post.title}</ArwText>
@@ -60,7 +58,6 @@ export default async function PostPage({
 					</ArwFlex>
 				</ArwPaper>
 
-				{/* Treść posta */}
 				<ArwPaper className="grow px-6">
 					{/* Render Quill HTML */}
 					<div

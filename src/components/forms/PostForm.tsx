@@ -9,7 +9,18 @@ import PostFormDialog from '@/components/dialogs/PostFormDialog'
 // lib
 import { createPost, updatePost } from '@/lib/actions/post.actions'
 
-// React Quill trzeba importować dynamicznie, bo SSR się wywala
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, false] }],
+    ['bold', 'italic', 'underline'],
+    [{ color: [] }, { background: [] }],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    ['blockquote', 'code-block'],
+    ['link', 'image'],
+    ['clean'],
+  ],
+}
+
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 import 'react-quill/dist/quill.snow.css'
 
@@ -50,10 +61,14 @@ export function PostForm({ post }: { post?: any }) {
 
 				{/* React Quill editor */}
 				<div className="min-h-[200px]">
-					<ReactQuill theme="snow" value={content} onChange={setContent} />
+					<ReactQuill
+						theme="snow"
+						value={content}
+						modules={modules}
+						onChange={setContent}
+					/>
 				</div>
 
-				{/* Ukryty input, żeby treść wysłała się w FormData */}
 				<input type="hidden" name="content" value={content} />
 
 				{post && <input type="hidden" name="slug" value={post.slug} />}
