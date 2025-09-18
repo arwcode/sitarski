@@ -87,6 +87,7 @@ const config = {
 	},
 	plugins: [
 		require('tailwindcss-animate'),
+		require('@tailwindcss/typography'),
 		plugin(({ addUtilities }) => {
 			addUtilities({
 				'.flex-center': {

@@ -31,9 +31,10 @@ export default async function PostPage({
 	return (
 		<ArwContainer>
 			<ArwFlex className="grow">
+				{/* Górny pasek z tytułem i akcjami */}
 				<ArwPaper className="px-6">
 					<ArwFlex row between>
-						<ArwText>{post.title}</ArwText>
+						<ArwText className="font-bold text-xl">{post.title}</ArwText>
 						<ArwFlex row>
 							{/* back */}
 							<ArwLink
@@ -59,8 +60,13 @@ export default async function PostPage({
 					</ArwFlex>
 				</ArwPaper>
 
+				{/* Treść posta */}
 				<ArwPaper className="grow px-6">
-					<ArwText className="text-justify">{post.content}</ArwText>
+					{/* Render Quill HTML */}
+					<div
+						className="prose prose-invert max-w-none text-justify"
+						dangerouslySetInnerHTML={{ __html: post.content }}
+					/>
 				</ArwPaper>
 			</ArwFlex>
 		</ArwContainer>
